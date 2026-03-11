@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nvidia GTC Giveaway Entry — Cognivise</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+    :root {
+      --nvidia-green: #76b900;
+      --nvidia-green-glow: rgba(118, 185, 0, 0.4);
+      --nvidia-green-dim: rgba(118, 185, 0, 0.15);
+      --bg-primary: #0a0a0a;
+      --bg-secondary: #111111;
+      --bg-card: #161616;
+      --bg-card-hover: #1c1c1c;
+      --text-primary: #f0f0f0;
+      --text-secondary: #aaaaaa;
+      --text-muted: #666666;
+      --border-color: rgba(118, 185, 0, 0.2);
+      --border-bright: rgba(118, 185, 0, 0.6);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── PARTICLE CANVAS ── */
+    #particle-canvas {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.35;
+    }
+
+    /* ── LAYOUT ── */
+    .page-wrapper {
+      position: relative;
+      z-index: 1;
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* ── HEADER BADGE ── */
+    .badge-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 28px;
+      animation: fadeSlideDown 0.6s ease both;
+    }
+    .badge {
+      background: var(--nvidia-green-dim);
+      border: 1px solid var(--border-color);
+      color: var(--nvidia-green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 100px;
+    }
+    .badge-dot {
+      width: 6px; height: 6px;
+      background: var(--nvidia-green);
+      border-radius: 50%;
+      animation: pulse 1.6s infinite;
+    }
+    .badge-line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, var(--border-color) 0%, transparent 100%);
+    }
+
+    /* ── HERO TITLE ── */
+    .hero { margin-bottom: 48px; animation: fadeSlideDown 0.7s ease 0.1s both; }
+
+    .hero-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--nvidia-green);
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 .highlight {
+      background: linear-gradient(135deg, #76b900 0%, #a8e000 50%, #76b900 100%);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 3s linear infinite;
+    }
+
+    .hero-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      max-width: 680px;
+    }
+
+    /* ── SESSION SPOTLIGHT ── */
+    .session-card {
+      border: 1px solid var(--border-bright);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(118,185,0,0.06) 0%, var(--bg-card) 60%);
+      padding: 32px;
+      margin-bottom: 36px;
+      position: relative;
+      overflow: hidden;
+      animation: fadeSlideUp 0.7s ease 0.2s both;
+    }
+    .session-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--nvidia-green), transparent);
+      animation: scanLine 3s linear infinite;
+    }
+
+    .session-tag {
+      display: inline-block;
+      background: var(--nvidia-green);
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 4px;
+      margin-bottom: 14px;
+    }
+
+    .session-card h2 {
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      color: #fff;
+    }
+
+    .session-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      color: var(--nvidia-green);
+      opacity: 0.8;
+    }
+
+    /* ── PROJECT CARD ── */
+    .project-card {
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: var(--bg-card);
+      padding: 32px;
+      margin-bottom: 28px;
+      animation: fadeSlideUp 0.7s ease 0.3s both;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .project-card:hover {
+      border-color: var(--border-bright);
+      background: var(--bg-card-hover);
+    }
+
+    .project-card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .project-title-group h3 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+    .project-title-group h3 span {
+      color: var(--nvidia-green);
+    }
+    .project-sub {
+      font-size: 13px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .status-pill {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(118,185,0,0.1);
+      border: 1px solid rgba(118,185,0,0.3);
+      border-radius: 100px;
+      padding: 6px 14px;
+      white-space: nowrap;
+    }
+    .status-pill .dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--nvidia-green);
+      animation: pulse 1.4s infinite;
+    }
+    .status-pill span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--nvidia-green);
+    }
+
+    .project-desc {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    /* ── PROGRESS BARS ── */
+    .progress-section { margin-bottom: 24px; }
+    .progress-section h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+    }
+    .progress-item { margin-bottom: 12px; }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+    .progress-label .name { color: var(--text-secondary); }
+    .progress-label .value { color: var(--nvidia-green); font-weight: 600; }
+    .progress-bar-bg {
+      height: 5px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 100px;
+      overflow: hidden;
+    }
+    .progress-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: linear-gradient(90deg, #76b900, #a8e000);
+      width: 0%;
+      transition: width 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ── LINK BUTTONS ── */
+    .link-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.22s ease;
+      border: 1px solid transparent;
+    }
+    .link-btn.primary {
+      background: var(--nvidia-green);
+      color: #000;
+    }
+    .link-btn.primary:hover {
+      background: #a8e000;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(118,185,0,0.35);
+    }
+    .link-btn.secondary {
+      background: transparent;
+      border-color: var(--border-color);
+      color: var(--text-secondary);
+    }
+    .link-btn.secondary:hover {
+      border-color: var(--border-bright);
+      color: var(--text-primary);
+      transform: translateY(-2px);
+    }
+    .link-btn svg { flex-shrink: 0; }
+
+    /* ── WHY CARD ── */
+    .why-card {
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: var(--bg-card);
+      padding: 32px;
+      margin-bottom: 28px;
+      animation: fadeSlideUp 0.7s ease 0.4s both;
+    }
+    .why-card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: var(--text-primary);
+    }
+
+    .reason-list { list-style: none; }
+    .reason-list li {
+      display: flex;
+      gap: 14px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .reason-list li:last-child { border-bottom: none; }
+    .reason-icon {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 8px;
+      background: var(--nvidia-green-dim);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      margin-top: 1px;
+    }
+    .reason-text strong { color: var(--text-primary); }
+
+    /* ── TECH TAGS ── */
+    .tech-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 28px;
+      animation: fadeSlideUp 0.7s ease 0.45s both;
+    }
+    .tech-tag {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 500;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 5px 12px;
+      border-radius: 6px;
+      transition: all 0.2s;
+      cursor: default;
+    }
+    .tech-tag:hover {
+      border-color: var(--border-color);
+      color: var(--nvidia-green);
+      background: var(--nvidia-green-dim);
+    }
+
+    /* ── CLOSING CTA ── */
+    .cta-card {
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(118,185,0,0.07) 0%, var(--bg-card) 80%);
+      padding: 36px 32px;
+      text-align: center;
+      animation: fadeSlideUp 0.7s ease 0.5s both;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--nvidia-green), transparent);
+      animation: scanLine 3s linear infinite reverse;
+    }
+    .cta-card p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-card p strong { color: var(--text-primary); }
+    .cta-card .signature {
+      margin-top: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      color: var(--nvidia-green);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: gap;
+      gap: 12px;
+      animation: fadeSlideUp 0.7s ease 0.6s both;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+    .nvidia-logo-text {
+      font-size: 14px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      color: var(--nvidia-green);
+    }
+    .footer-right {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeSlideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.5; transform: scale(0.85); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+    @keyframes scanLine {
+      0%   { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .project-card-header { flex-direction: column; }
+      .link-btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Particle canvas -->
+<canvas id="particle-canvas"></canvas>
+
+<div class="page-wrapper">
+
+  <!-- Badge Row -->
+  <div class="badge-row">
+    <div class="badge-dot"></div>
+    <div class="badge">Nvidia GTC 2026 — Giveaway Entry</div>
+    <div class="badge-line"></div>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="hero-label">March 16 – 19, 2026 &nbsp;·&nbsp; Virtual Attendance</p>
+    <h1>
+      Most Excited About<br>
+      <span class="highlight">Visual AI Agents</span><br>
+      for Real-Time Video
+    </h1>
+    <p class="hero-sub">
+      I'm building <strong>Cognivise</strong> — a closed-loop cognitive intelligence system that
+      <em>watches, listens, and adapts</em> to learners in real time. This session is the exact
+      knowledge I need to take it from observation to true cognition.
+    </p>
+  </div>
+
+  <!-- Session Spotlight -->
+  <div class="session-card">
+    <div class="session-tag">Most Excited Session</div>
+    <h2>Watch Party: Visual AI Agents for Real-Time Video Understanding</h2>
+    <p class="session-id">Session ID: WP81836a &nbsp;·&nbsp; Nvidia GTC 2026</p>
+  </div>
+
+  <!-- Project Card -->
+  <div class="project-card" id="project-card">
+    <div class="project-card-header">
+      <div class="project-title-group">
+        <h3><span>Cognivise</span> — Adaptive Learner Intelligence</h3>
+        <p class="project-sub">closed-loop · cognitive · real-time vision</p>
+      </div>
+      <div class="status-pill">
+        <div class="dot"></div>
+        <span>Active Development</span>
+      </div>
+    </div>
+
+    <p class="project-desc">
+      Cognivise is not a passive monitoring tool — it is a <strong>cognitive agent</strong> that
+      understands attention, engagement, and behavioral patterns, then adapts its responses
+      dynamically. Think of a skilled teacher who never applies generic rules but adjusts
+      uniquely to every learner. That is the long-term vision.
+      <br><br>
+      The system currently has a working <strong>real-time monitoring phase</strong> built on
+      an open-source Vision SDK. The next frontier — bridging observation and adaptation — is
+      precisely what this GTC session will help unlock.
+    </p>
+
+    <!-- Progress Bars -->
+    <div class="progress-section">
+      <h4>Build Progress</h4>
+      <div class="progress-item">
+        <div class="progress-label">
+          <span class="name">Real-Time Visual Monitoring</span>
+          <span class="value">78%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" data-width="78"></div>
+        </div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label">
+          <span class="name">Behavioral Pattern Recognition</span>
+          <span class="value">45%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" data-width="45"></div>
+        </div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label">
+          <span class="name">Adaptive Feedback Loop</span>
+          <span class="value">22%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" data-width="22"></div>
+        </div>
+      </div>
+      <div class="progress-item">
+        <div class="progress-label">
+          <span class="name">Scalable Deployment Layer</span>
+          <span class="value">10%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" data-width="10"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Links -->
+    <div class="link-row">
+      <a href="https://github.com/algsoch/Cognivise" target="_blank" class="link-btn primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+        </svg>
+        Cognivise (Main Project)
+      </a>
+      <a href="https://github.com/GetStream/Vision-Agents" target="_blank" class="link-btn secondary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+        </svg>
+        Vision Agents SDK
+      </a>
+    </div>
+  </div>
+
+  <!-- Why This Session -->
+  <div class="why-card">
+    <h3>Why This Session Matters to Me</h3>
+    <ul class="reason-list">
+      <li>
+        <div class="reason-icon">👁</div>
+        <div class="reason-text">
+          <strong>Real-time video understanding is Cognivise's core challenge.</strong>
+          The agent must interpret learner behavior — gaze, posture, micro-expressions — live,
+          not in post-processing batches.
+        </div>
+      </li>
+      <li>
+        <div class="reason-icon">⚡</div>
+        <div class="reason-text">
+          <strong>Low-latency inference at scale.</strong>
+          For a classroom deployment to work, the visual agent must operate under strict
+          latency constraints. Nvidia's session will reveal production-grade patterns for this.
+        </div>
+      </li>
+      <li>
+        <div class="reason-icon">🤖</div>
+        <div class="reason-text">
+          <strong>Bridging observation → autonomous adaptation.</strong>
+          The gap between "what I see" and "what I should do" is where Cognivise currently
+          falls short. This session directly addresses that closed-loop agentic design.
+        </div>
+      </li>
+      <li>
+        <div class="reason-icon">🏗</div>
+        <div class="reason-text">
+          <strong>Jetson AGX Thor is a perfect deployment target.</strong>
+          Running Cognivise on-device without cloud round-trips would make it viable for
+          schools with limited connectivity — exactly what an edge-capable dev kit enables.
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- Tech Stack Tags -->
+  <div class="tech-strip">
+    <span class="tech-tag">Python</span>
+    <span class="tech-tag">Vision SDK</span>
+    <span class="tech-tag">Real-Time Inference</span>
+    <span class="tech-tag">Behavioral AI</span>
+    <span class="tech-tag">Closed-Loop Agents</span>
+    <span class="tech-tag">Edge Deployment</span>
+    <span class="tech-tag">Jetson AGX Thor</span>
+    <span class="tech-tag">Agentic AI</span>
+    <span class="tech-tag">LLM Integration</span>
+    <span class="tech-tag">Digital Twins</span>
+  </div>
+
+  <!-- Closing CTA -->
+  <div class="cta-card">
+    <p>
+      This is <strong>not a hackathon experiment</strong> — Cognivise is designed to be a
+      practical, real-world system for intelligent learner monitoring. Winning the
+      <strong>Jetson AGX Thor developer kit</strong> would let me run the visual agent
+      entirely on-device, bringing adaptive AI education to low-connectivity classrooms
+      at scale. The <strong>$100 Brev credits</strong> would accelerate the GPU prototyping
+      I can't currently afford.
+    </p>
+    <p class="signature">
+      ✦ &nbsp; Subscribed &nbsp;·&nbsp; Watching GTC March 16–19 &nbsp;·&nbsp; github.com/algsoch/Cognivise &nbsp; ✦
+    </p>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-left">
+      <span class="nvidia-logo-text">NVIDIA</span>
+      <span>·</span>
+      <span>GTC 2026 Giveaway Entry</span>
+    </div>
+    <div class="footer-right">March 2026 · @algsoch</div>
+  </div>
+
+</div>
+
+<!-- ── PARTICLE SYSTEM ── -->
+<script>
+  (() => {
+    const canvas = document.getElementById('particle-canvas');
+    const ctx = canvas.getContext('2d');
+    let W, H, particles = [], lines = [];
+
+    function resize() {
+      W = canvas.width  = window.innerWidth;
+      H = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    const COUNT = 70;
+    const GREEN = '118,185,0';
+
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * 2000,
+        y: Math.random() * 2000,
+        vx: (Math.random() - 0.5) * 0.3,
+        vy: (Math.random() - 0.5) * 0.3,
+        r: Math.random() * 1.5 + 0.5,
+      });
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx; p.y += p.vy;
+        if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+        if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${GREEN},0.7)`;
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const q = particles[j];
+          const d = Math.hypot(p.x - q.x, p.y - q.y);
+          if (d < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(q.x, q.y);
+            ctx.strokeStyle = `rgba(${GREEN},${0.25 * (1 - d / 120)})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+</script>
+
+<!-- ── PROGRESS BAR ANIMATION ── -->
+<script>
+  (() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.progress-bar-fill').forEach(bar => {
+            const w = bar.dataset.width;
+            setTimeout(() => { bar.style.width = w + '%'; }, 200);
+          });
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const card = document.getElementById('project-card');
+    if (card) observer.observe(card);
+  })();
+</script>
+
+</body>
+</html>
