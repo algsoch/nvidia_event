@@ -192,7 +192,7 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none;}
 .lm-bottom{display:flex;gap:6px;flex-wrap:wrap;}
 .lm-stat{font-family:var(--mono);font-size:10px;color:var(--t3);background:rgba(2,4,9,.78);padding:3px 7px;border-radius:4px;}
 .lm-stat b{color:var(--t1);}
-.int-toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,rgba(124,58,237,.92),rgba(249,115,22,.85));color:#fff;font-size:11.5px;font-weight:700;padding:8px 16px;border-radius:100px;pointer-events:none;opacity:0;z-index:20;transition:opacity .3s;text-align:center;white-space:nowrap;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);}
+.int-toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:linear-gradient(135deg,rgba(76,121,0,.95),rgba(249,115,22,.88));color:#f0ffcc;font-size:11.5px;font-weight:700;padding:8px 16px;border-radius:100px;pointer-events:none;opacity:0;z-index:20;transition:opacity .3s;text-align:center;white-space:nowrap;backdrop-filter:blur(8px);border:1px solid rgba(168,224,0,.3);}
 .int-toast.show{opacity:1;}
 .gemini-flash-badge{position:absolute;bottom:10px;right:10px;font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;background:rgba(249,115,22,.12);border:1px solid rgba(249,115,22,.3);color:var(--a2);z-index:10;font-family:var(--mono);display:flex;align-items:center;gap:6px;}
 .cog-right{background:var(--bg1);display:flex;flex-direction:column;overflow:hidden;}
@@ -1105,7 +1105,7 @@ function drawLearner(ctx,W,H){
   const gazeY=COG.att<45?1.8:0;
   if(COG.blinkEyeOpen>0.18){
     // Iris
-    ctx.fillStyle='#a78bfa';
+    ctx.fillStyle='#a8e000';
     ctx.beginPath();ctx.arc(px-16+gazeX,py-6+gazeY,4.5*COG.blinkEyeOpen,0,Math.PI*2);ctx.fill();
     ctx.beginPath();ctx.arc(px+16+gazeX,py-6+gazeY,4.5*COG.blinkEyeOpen,0,Math.PI*2);ctx.fill();
     // Pupil
