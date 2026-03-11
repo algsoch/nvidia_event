@@ -171,6 +171,71 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none;}
 .wf-c{flex:1;height:32px;border-radius:var(--rs);overflow:hidden;display:block;background:var(--bg3);}
 .perm-note{padding:12px 16px;border-top:1px solid rgb(255,82,82,.2);background:rgba(255,82,82,.06);font-size:12px;color:rgba(255,82,82,.8);display:none;}
 
+/* ─── COGNIVISE SESSION DEMO ─── */
+.cog-root{background:var(--bg1);border:1px solid var(--border);border-radius:var(--rl);overflow:hidden;animation:fadeUp .65s var(--ease) .25s both;}
+.cog-hdr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:clamp(12px,2vw,16px) clamp(16px,3vw,22px);background:var(--bg2);border-bottom:1px solid var(--border);}
+.cog-hdr-info{font-family:var(--mono);font-size:11px;color:var(--t3);margin-left:8px;}
+.cog-hdr-right{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.cog-timer{font-family:var(--mono);font-size:12px;color:var(--t2);background:var(--bg3);padding:4px 10px;border-radius:6px;border:1px solid var(--border);}
+.cog-run-btn{font-size:12px;font-weight:700;padding:7px 18px;border-radius:100px;background:linear-gradient(135deg,var(--p1),var(--a1));color:#fff;cursor:pointer;border:none;transition:all .2s var(--ease);}
+.cog-run-btn:hover{filter:brightness(1.1);transform:scale(1.04);}
+.cog-layout{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);}
+@media(max-width:600px){.cog-layout{grid-template-columns:1fr;}}
+.cog-cam-wrap{position:relative;background:var(--bg1);aspect-ratio:4/3;overflow:hidden;}
+.cog-cam-wrap canvas{position:absolute;inset:0;width:100%;height:100%;}
+.lm-overlay{position:absolute;inset:0;pointer-events:none;z-index:8;display:flex;flex-direction:column;justify-content:space-between;padding:10px;}
+.lm-top{display:flex;justify-content:space-between;align-items:center;}
+.lm-label{font-family:var(--mono);font-size:10px;color:var(--t2);background:rgba(2,4,9,.78);padding:3px 8px;border-radius:4px;border:1px solid var(--border2);backdrop-filter:blur(4px);}
+.lm-pts{font-family:var(--mono);font-size:10px;color:var(--a1);background:rgba(2,4,9,.78);padding:3px 8px;border-radius:4px;}
+.lm-emo{text-align:center;font-size:12.5px;font-weight:700;padding:4px 14px;border-radius:100px;background:rgba(2,4,9,.78);backdrop-filter:blur(6px);border:1px solid var(--border2);align-self:center;min-width:140px;transition:all .5s var(--ease);}
+.lm-bottom{display:flex;gap:6px;flex-wrap:wrap;}
+.lm-stat{font-family:var(--mono);font-size:10px;color:var(--t3);background:rgba(2,4,9,.78);padding:3px 7px;border-radius:4px;}
+.lm-stat b{color:var(--t1);}
+.int-toast{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(108,92,231,.93);color:#fff;font-size:11.5px;font-weight:700;padding:8px 16px;border-radius:100px;pointer-events:none;opacity:0;z-index:20;transition:opacity .3s;text-align:center;white-space:nowrap;backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.15);}
+.int-toast.show{opacity:1;}
+.gemini-flash-badge{position:absolute;bottom:10px;right:10px;font-size:10px;font-weight:700;padding:4px 10px;border-radius:100px;background:rgba(0,194,240,.12);border:1px solid rgba(0,194,240,.3);color:var(--a2);z-index:10;font-family:var(--mono);display:flex;align-items:center;gap:6px;}
+.cog-right{background:var(--bg1);display:flex;flex-direction:column;overflow:hidden;}
+.cog-agent-hdr{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--bg2);border-bottom:1px solid var(--border);}
+.cog-agent-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--p1),var(--a1));display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;color:#fff;flex-shrink:0;}
+.cog-agent-name{font-size:13px;font-weight:800;}
+.cog-agent-sub{font-family:var(--mono);font-size:10px;color:var(--t3);}
+.cog-audio-ind{margin-left:auto;display:flex;gap:2px;align-items:flex-end;height:18px;padding-right:2px;}
+.cog-audio-ind span{width:3px;border-radius:2px;background:var(--ok);transition:height .08s;}
+.cog-chat{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;min-height:150px;max-height:220px;scrollbar-width:thin;scrollbar-color:var(--border) transparent;}
+.cog-msg{max-width:92%;font-size:12px;line-height:1.55;padding:9px 12px;border-radius:14px;animation:fadeUp .3s var(--ease) both;}
+.cog-msg.agent{background:var(--gp);border:1px solid var(--border2);color:var(--t1);align-self:flex-start;border-bottom-left-radius:4px;}
+.cog-msg.learner{background:var(--bg3);border:1px solid var(--border);color:var(--t2);align-self:flex-end;border-bottom-right-radius:4px;}
+.cog-msg.sys{background:rgba(0,194,240,.07);border:1px solid rgba(0,194,240,.15);color:var(--a2);align-self:center;font-size:10.5px;font-family:var(--mono);text-align:center;border-radius:8px;max-width:100%;}
+.cog-msg-who{font-size:10px;font-weight:700;margin-bottom:3px;opacity:.7;}
+.agent .cog-msg-who{color:var(--p2);}
+.learner .cog-msg-who{color:var(--t3);}
+.gemini-thinking{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--a2);font-family:var(--mono);padding:6px 12px;background:rgba(0,194,240,.05);border-radius:8px;border:1px solid rgba(0,194,240,.12);align-self:flex-start;}
+.gt-dots span{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--a2);margin:0 1px;animation:blink 1s infinite;}
+.gt-dots span:nth-child(2){animation-delay:.2s;}
+.gt-dots span:nth-child(3){animation-delay:.4s;}
+.cog-metrics{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--border);}
+.cog-gauge-item{padding:10px 8px;display:flex;flex-direction:column;align-items:center;gap:4px;border-right:1px solid var(--border);}
+.cog-gauge-item:last-child{border-right:none;}
+.cog-gauge-ring{position:relative;width:54px;height:54px;}
+.cog-gauge-ring svg{width:54px;height:54px;transform:rotate(-90deg);}
+.ring-bg{fill:none;stroke:rgba(255,255,255,.05);stroke-width:4;}
+.ring-fill{fill:none;stroke-width:4;stroke-linecap:round;stroke-dasharray:150.8;stroke-dashoffset:150.8;transition:stroke-dashoffset .8s var(--ease);}
+.cog-gauge-ring>span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;font-family:var(--mono);}
+.cog-gauge-lbl{font-size:9.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--t3);}
+.cog-bottom{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);border-top:1px solid var(--border);}
+@media(max-width:600px){.cog-bottom{grid-template-columns:1fr;}}
+.cog-mastery{background:var(--bg2);padding:clamp(12px,2vw,18px);}
+.cog-mastery-hdr{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--t3);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center;}
+.mbar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
+.mbar-topic{color:var(--t2);font-size:11px;width:110px;flex-shrink:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mbar-track{flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:100px;overflow:hidden;}
+.mbar-fill{height:100%;border-radius:100px;transition:width .8s var(--ease);width:0%;}
+.mbar-val{font-family:var(--mono);font-size:11px;color:var(--t3);width:32px;text-align:right;flex-shrink:0;}
+.cog-wf-wrap{background:var(--bg2);padding:clamp(12px,2vw,18px);}
+.cog-wf-hdr{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.cog-wf-legend{font-size:11px;display:flex;gap:10px;}
+.cog-wf-canvas{width:100%;height:clamp(60px,10vw,88px);display:block;border-radius:4px;}
+
 /* ─── PROJECT CARD ─── */
 .mpills{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:clamp(18px,3vw,26px);}
 .mpill{flex:1;min-width:80px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rm);padding:12px 14px;display:flex;flex-direction:column;gap:4px;}
@@ -338,87 +403,115 @@ button{font-family:var(--font);cursor:pointer;border:none;background:none;}
   </div>
 </section>
 
-<!-- ══ ADVANCED VISION MONITOR ═══════════════ -->
+<!-- ══ COGNIVISE SESSION DEMO ════════════════ -->
 <section class="section">
-  <p class="s-label">Real-Time Vision Monitor — Live Demo</p>
-  <div class="monitor-root" id="monitor-root">
-    <div class="monitor-topbar">
-      <div class="monitor-title">
-        <div class="chip chip-g" id="cam-chip"><div class="pulse-dot"></div>Demo Mode</div>
-        <span style="color:var(--t2);font-family:var(--mono);font-size:11px;">Cognivise Frame Analyzer v0.1 · Simulated Subject</span>
+  <p class="s-label">Cognivise · Live Session Demo</p>
+  <div class="cog-root" id="cog-root">
+
+    <!-- Header bar -->
+    <div class="cog-hdr">
+      <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+        <div class="chip chip-g" id="cog-chip"><div class="pulse-dot"></div>Ready</div>
+        <span class="cog-hdr-info" id="cog-hdr-info">Vicky Kumar &nbsp;·&nbsp; <span style="color:var(--a2)">&#8220;Python Decorators&#8221;</span> — youtube.com</span>
       </div>
-      <div class="monitor-actions">
-        <button class="mbtn active" id="btn-raw"    onclick="setView('raw')">Raw</button>
-        <button class="mbtn"        id="btn-edge"   onclick="setView('edge')">Edge</button>
-        <button class="mbtn"        id="btn-motion" onclick="setView('motion')">Motion</button>
-        <button class="mbtn"        id="btn-trail"  onclick="setView('trail')">Trail</button>
-        <button class="mbtn"        id="btn-grid"   onclick="setView('grid')">Grid</button>
-        <button class="mbtn"        id="btn-start"  onclick="startDemo()" style="color:var(--ok);border-color:rgba(0,230,118,.3);">▶ Run Demo</button>
+      <div class="cog-hdr-right">
+        <span style="font-family:var(--mono);font-size:10px;color:var(--t3);">State: <b id="cog-state-lbl" style="color:var(--a2)">IDLE</b></span>
+        <span class="cog-timer" id="cog-timer">00:00</span>
+        <button class="cog-run-btn" id="cog-run-btn" onclick="cogToggle()">&#9654; Run Demo</button>
       </div>
     </div>
 
-    <div class="canvas-grid">
-      <!-- Panel 1: Current view -->
-      <div class="canvas-panel">
-        <canvas id="c-main"></canvas>
-        <div class="plabel" id="lbl-main">RAW FEED</div>
-        <div class="pfps" id="fps-disp">0 fps</div>
-        <div class="pover"><span id="p1s1">Brightness: --</span><span id="p1s2">Contrast: --</span></div>
-        <div class="no-cam" id="nc1" style="cursor:pointer" onclick="startDemo()">
-          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-          <span>Frame-by-frame vision simulation</span>
-          <button class="start-cam-btn">▶ Run Demo</button>
+    <!-- 2-column: learner cam | agent chat + metrics -->
+    <div class="cog-layout">
+
+      <!-- LEFT: Learner camera with full MediaPipe + emotion overlay -->
+      <div class="cog-cam-wrap">
+        <canvas id="cv-learner"></canvas>
+        <div class="lm-overlay">
+          <div class="lm-top">
+            <span class="lm-label">LEARNER CAM &nbsp;·&nbsp; <span id="lm-fps">0</span> fps</span>
+            <span class="lm-pts">468 pts &nbsp;·&nbsp; YOLO11</span>
+          </div>
+          <div class="lm-emo" id="lm-emo" style="opacity:0">&#8212;</div>
+          <div class="lm-bottom">
+            <span class="lm-stat">EAR <b id="lm-ear">&#8212;</b></span>
+            <span class="lm-stat">Yaw <b id="lm-yaw">&#8212;</b></span>
+            <span class="lm-stat">Blinks <b id="lm-blinks">0</b></span>
+            <span class="lm-stat">Rest <b id="lm-rest">&#8212;</b></span>
+          </div>
         </div>
-      </div>
-      <!-- Panel 2: Sobel edge -->
-      <div class="canvas-panel">
-        <canvas id="c-edge"></canvas>
-        <div class="plabel">EDGE (Sobel)</div>
-        <div class="pover"><span id="p2s1">Edges: --</span><span id="p2s2">Complexity: --</span></div>
-        <div class="no-cam" id="nc2">
-          <span style="font-size:11px;opacity:.6">Sobel edges — loading…</span>
+        <div class="gemini-flash-badge" id="gfb" style="opacity:0">
+          <div class="pulse-dot"></div>Gemini Flash &nbsp;·&nbsp; <span id="gfb-topic">detecting&#8230;</span>
         </div>
+        <div class="int-toast" id="int-toast"></div>
       </div>
-      <!-- Panel 3: Motion heatmap -->
-      <div class="canvas-panel">
-        <canvas id="c-motion"></canvas>
-        <div class="plabel">MOTION HEATMAP</div>
-        <div class="pover"><span id="p3s1">Motion: --</span><span id="p3s2">Velocity: --</span></div>
-        <div class="no-cam" id="nc3">
-          <span style="font-size:11px;opacity:.6">Δ-frame heatmap — loading…</span>
+
+      <!-- RIGHT: Agent chat feed + circular gauges -->
+      <div class="cog-right">
+        <div class="cog-agent-hdr">
+          <div class="cog-agent-avatar">A</div>
+          <div>
+            <div class="cog-agent-name">Algsoch</div>
+            <div class="cog-agent-sub" id="agent-status">Waiting to start&#8230;</div>
+          </div>
+          <div class="cog-audio-ind" id="audio-ind">
+            <span style="height:4px"></span><span style="height:4px"></span>
+            <span style="height:4px"></span><span style="height:4px"></span>
+            <span style="height:4px"></span>
+          </div>
         </div>
-      </div>
-      <!-- Panel 4: Trail -->
-      <div class="canvas-panel">
-        <canvas id="c-trail"></canvas>
-        <div class="plabel">MOVEMENT TRAIL</div>
-        <div class="pover"><span id="p4s1">Trail: --</span><span id="p4s2">Active zones: --</span></div>
-        <div class="no-cam" id="nc4">
-          <span style="font-size:11px;opacity:.6">Trail accumulator — loading…</span>
+        <div class="cog-chat" id="cog-chat"></div>
+        <div class="cog-metrics">
+          <div class="cog-gauge-item">
+            <div class="cog-gauge-ring">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" class="ring-bg"/><circle cx="30" cy="30" r="24" class="ring-fill" id="rg-eng" style="stroke:var(--ok)"/></svg>
+              <span id="gv-eng" style="color:var(--ok)">--</span>
+            </div>
+            <div class="cog-gauge-lbl">Engagement</div>
+          </div>
+          <div class="cog-gauge-item">
+            <div class="cog-gauge-ring">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" class="ring-bg"/><circle cx="30" cy="30" r="24" class="ring-fill" id="rg-att" style="stroke:var(--a1)"/></svg>
+              <span id="gv-att" style="color:var(--a1)">--</span>
+            </div>
+            <div class="cog-gauge-lbl">Attention</div>
+          </div>
+          <div class="cog-gauge-item">
+            <div class="cog-gauge-ring">
+              <svg viewBox="0 0 60 60"><circle cx="30" cy="30" r="24" class="ring-bg"/><circle cx="30" cy="30" r="24" class="ring-fill" id="rg-cog" style="stroke:var(--warn)"/></svg>
+              <span id="gv-cog" style="color:var(--warn)">--</span>
+            </div>
+            <div class="cog-gauge-lbl">Cogn.Load</div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="monitor-stats">
-      <div class="stat-cell"><div class="stat-label">Brightness</div><div class="stat-value ca" id="sv-br">--</div><div class="stat-bar"><div class="stat-bar-fill" id="sb-br" style="background:var(--a1)"></div></div></div>
-      <div class="stat-cell"><div class="stat-label">Motion %</div><div class="stat-value cw" id="sv-mo">--</div><div class="stat-bar"><div class="stat-bar-fill" id="sb-mo" style="background:var(--warn)"></div></div></div>
-      <div class="stat-cell"><div class="stat-label">Edge Density</div><div class="stat-value cp" id="sv-ed">--</div><div class="stat-bar"><div class="stat-bar-fill" id="sb-ed" style="background:var(--p2)"></div></div></div>
-      <div class="stat-cell"><div class="stat-label">Contrast</div><div class="stat-value" id="sv-co">--</div><div class="stat-bar"><div class="stat-bar-fill" id="sb-co" style="background:var(--t2)"></div></div></div>
-      <div class="stat-cell"><div class="stat-label">Active Zones</div><div class="stat-value cg" id="sv-zo">--</div><div class="stat-bar"><div class="stat-bar-fill" id="sb-zo" style="background:var(--ok)"></div></div></div>
-      <div class="stat-cell"><div class="stat-label">Frame #</div><div class="stat-value" id="sv-fr">0</div><div class="stat-bar"><div class="stat-bar-fill" id="sb-fr" style="background:var(--t3);width:50%"></div></div></div>
+    <!-- Bottom: mastery bars + dual waveform -->
+    <div class="cog-bottom">
+      <div class="cog-mastery">
+        <div class="cog-mastery-hdr">
+          <span>&#127919; Topic Mastery</span>
+          <span style="font-size:10px;color:var(--a2);font-family:var(--mono)" id="mastery-cycle">Cycle 1</span>
+        </div>
+        <div class="mbar-row"><span class="mbar-topic">Python Decorators</span><div class="mbar-track"><div class="mbar-fill" id="mb-dec" style="background:var(--p2)"></div></div><span class="mbar-val" id="mv-dec">0%</span></div>
+        <div class="mbar-row"><span class="mbar-topic">Closures</span><div class="mbar-track"><div class="mbar-fill" id="mb-clo" style="background:var(--a1)"></div></div><span class="mbar-val" id="mv-clo">0%</span></div>
+        <div class="mbar-row"><span class="mbar-topic">Higher-Order Fns</span><div class="mbar-track"><div class="mbar-fill" id="mb-hof" style="background:var(--ok)"></div></div><span class="mbar-val" id="mv-hof">0%</span></div>
+        <div class="mbar-row"><span class="mbar-topic">functools.wraps</span><div class="mbar-track"><div class="mbar-fill" id="mb-ft" style="background:var(--warn)"></div></div><span class="mbar-val" id="mv-ft">0%</span></div>
+      </div>
+      <div class="cog-wf-wrap">
+        <div class="cog-wf-hdr">
+          <div class="cog-wf-legend">
+            <span style="color:var(--ok)">&#9679; Engagement</span>
+            <span style="color:var(--a1)">&#9679; Attention</span>
+            <span style="color:var(--warn)">&#9679; Cog.Load</span>
+          </div>
+          <span style="font-family:var(--mono);font-size:10px;color:var(--t3)">-120s &#8594; now</span>
+        </div>
+        <canvas id="cv-wf" class="cog-wf-canvas" height="80"></canvas>
+      </div>
     </div>
 
-    <div class="mgrid-wrap">
-      <div class="mgrid-title">Zone Activity Grid (8 × 5 regions)</div>
-      <canvas class="mgrid-canvas" id="c-zones" height="80"></canvas>
-    </div>
-
-    <div class="wf-wrap">
-      <div class="wf-row"><div class="wf-lbl">Brightness</div><canvas class="wf-c" id="wf-br"></canvas></div>
-      <div class="wf-row"><div class="wf-lbl">Motion</div><canvas class="wf-c" id="wf-mo"></canvas></div>
-      <div class="wf-row"><div class="wf-lbl">Edge Density</div><canvas class="wf-c" id="wf-ed"></canvas></div>
-    </div>
-    <div class="perm-note" id="perm-note" style="display:none"></div>
   </div>
 </section>
 
@@ -663,332 +756,377 @@ function toggleSound(){
 }
 (function(){const s=document.createElement('script');s.src='https://www.youtube.com/iframe_api';document.head.appendChild(s);})();
 
-/* ── ADVANCED VISION MONITOR ──────────── */
-const M={
-  video:null,running:false,frame:0,
-  prev:null,trail:null,view:'raw',
-  W:320,H:240,GC:8,GR:5,
-  brightH:[],motionH:[],edgeH:[],HLEN:120,
-  fpsCnt:0,fpsTime:0,fps:0,
-  offC:null,offX:null
+/* ── COGNIVISE SESSION DEMO ─────────────── */
+
+const DEMO_STATES=[
+  {id:'GREETING', dur:7,  eng:62,att:68,coe:28,emo:'Curious \uD83D\uDE0A',ear:0.32,yaw:2, blink:0,rest:.08,
+   msg:{w:'agent',t:"Hey Vicky! I'm Algsoch, your AI tutor! I see you're watching \u2018Python Decorators\u2019 \u2014 let\u2019s learn it together!"},
+   sys:'Gemini 2.5 Realtime connected \u00b7 Algsoch online \u00b7 topic auto-detected via Gemini Flash',
+   mastery:{dec:0,clo:0,hof:0,ft:0}},
+  {id:'FOCUSED',   dur:16, eng:85,att:91,coe:29,emo:'Focused \uD83C\uDFAF',ear:0.31,yaw:0, blink:0,rest:.07,
+   sys:'\u2714 Engagement 85 \u00b7 Attention 91 \u2014 optimal zone \u00b7 no intervention needed',
+   mastery:{dec:14,clo:10,hof:6,ft:0}},
+  {id:'DISTRACTED',dur:11, eng:50,att:25,coe:52,emo:'Distracted \uD83D\uDC40',ear:0.30,yaw:28,blink:1,rest:.64,
+   msg:{w:'agent',t:'Still with me, Vicky? What have you learned about decorators so far?'},
+   int:'\uD83D\uDCCD Attention drop detected \u2192 Check-in fired',
+   sys:'\u26A0 Attention: 25 \u2014 ReasoningLoop dispatched CHECK_IN',
+   mastery:{dec:14,clo:10,hof:6,ft:0}},
+  {id:'ANSWERING',  dur:9,  eng:75,att:80,coe:46,emo:'Thinking \uD83E\uDD14',ear:0.32,yaw:5, blink:0,rest:.17,
+   msg:{w:'learner',t:'They wrap functions and add behavior \u2014 without changing the original code\u2026'},
+   mastery:{dec:22,clo:13,hof:8,ft:0}},
+  {id:'CONFUSED',  dur:13, eng:47,att:64,coe:91,emo:'Confused \uD83D\uDE15',ear:0.28,yaw:-9,blink:1,rest:.74,
+   msg:{w:'agent',t:'Think of a decorator as a gift wrapper \u2014 it adds a bow around your function, without touching what\u2019s inside. \uD83C\uDF81'},
+   int:'\uD83D\uDD04 Cognitive load 91% \u2192 Simplification sent',
+   sys:'\u26A0 CogLoad: HIGH \u2014 Gemini generated concept simplification',
+   mastery:{dec:22,clo:13,hof:8,ft:0}},
+  {id:'ENGAGED',   dur:16, eng:94,att:90,coe:34,emo:'Engaged \uD83D\uDD25',ear:0.34,yaw:1, blink:0,rest:.08,
+   msg:{w:'agent',t:'Excellent! Decorator mastery just hit 56%! Now tell me \u2014 what does @functools.wraps do?'},
+   int:'\u26A1 High engagement \u2192 Challenge question dispatched',
+   sys:'\u2714 ReasoningLoop: CHALLENGE_LEARNER \u2014 mastery rising fast',
+   mastery:{dec:56,clo:28,hof:35,ft:8}},
+  {id:'MASTERY',   dur:10, eng:88,att:84,coe:31,emo:'Confident \u2728',ear:0.31,yaw:2, blink:0,rest:.07,
+   msg:{w:'learner',t:'It preserves the wrapped function\u2019s __name__ and __doc__ \u2014 without it, introspection breaks!'},
+   sys:'\u2714 Semantic eval: CORRECT \u2014 mastery delta +12 \u00b7 spaced repetition scheduled',
+   mastery:{dec:68,clo:36,hof:44,ft:24}},
+  {id:'RECALL',    dur:12, eng:82,att:85,coe:36,emo:'Focused \uD83C\uDFAF',ear:0.32,yaw:-2,blink:0,rest:.09,
+   msg:{w:'agent',t:'\uD83C\uDFAF Mastery: Python Decorators \u2192 72%. Spaced repetition in 3 days. Great work today, Vicky!'},
+   int:'\uD83D\uDCDA Spaced repetition scheduled \u2014 session complete',
+   sys:'Session complete \u00b7 Dashboard ready \u00b7 Next review: +3 days',
+   mastery:{dec:72,clo:44,hof:54,ft:34}},
+];
+
+const COG={
+  running:false,stateIdx:0,elapsed:0,totalTime:0,
+  blinks:0,eng:0,att:0,coe:0,ear:0.32,yaw:0,rest:0,
+  engH:[],attH:[],cogH:[],WH:120,
+  t:0,W:0,H:0,
+  blinkEyeOpen:1,blinkAnimT:0,blinkAnimating:false,
+  stateTimer:null,rafId:null,
+  fpsCnt:0,fpsT:0,fps:0,lastRafT:0,
 };
-const V_LABELS={raw:'RAW FEED',edge:'EDGE DETECTION',motion:'MOTION HEATMAP',trail:'MOVEMENT TRAIL',grid:'ZONE GRID'};
 
-function setView(v){
-  M.view=v;
-  ['raw','edge','motion','trail','grid'].forEach(id=>{
-    const b=document.getElementById('btn-'+id);if(b)b.classList.toggle('active',id===v);
-  });
-  const l=document.getElementById('lbl-main');if(l)l.textContent=V_LABELS[v]||v.toUpperCase();
+function G2(id){return document.getElementById(id);}
+
+function cogToggle(){if(COG.running)stopCog();else startCog();}
+
+function startCog(){
+  COG.running=true;COG.stateIdx=0;COG.elapsed=0;COG.totalTime=0;
+  COG.engH=[];COG.attH=[];COG.cogH=[];COG.blinks=0;COG.t=0;
+  COG.fps=0;COG.fpsCnt=0;COG.fpsT=performance.now();COG.lastRafT=0;
+  const cv=G2('cv-learner'),wrap=cv?.parentElement;
+  if(cv&&wrap){cv.width=wrap.offsetWidth||320;cv.height=wrap.offsetHeight||240;}
+  COG.W=cv?.width||320;COG.H=cv?.height||240;
+  const wf=G2('cv-wf');if(wf){wf.width=wf.parentElement?.offsetWidth||320;}
+  G2('cog-run-btn').textContent='\u25A0 Stop';
+  G2('agent-status').textContent='Connected \u00b7 Gemini 2.5 Realtime';
+  G2('lm-emo').style.opacity='1';
+  G2('gfb').style.opacity='1';
+  G2('gfb-topic').textContent='Python Decorators';
+  G2('cog-chat').innerHTML='';
+  enterState(0);
+  COG.rafId=requestAnimationFrame(cogRaf);
+  COG.stateTimer=setInterval(tickState,1000);
 }
 
-/* ── Demo simulation state ── */
-const SIM={
-  t:0,
-  drifts:[
-    {ax:18,ay:10,wx:0.09,wy:0.07,fx:0,fy:1.3},
-    {ax:8, ay:14,wx:0.21,wy:0.17,fx:2.1,fy:0.5},
-    {ax:5, ay:5, wx:0.67,wy:0.53,fx:0.9,fy:3.0},
-    {ax:3, ay:3, wx:1.43,wy:1.17,fx:1.5,fy:2.2},
-  ],
-  breathFreq:0.27,breathPhase:0,
-  blinkTimer:3.2,eyeOpen:1,blinkActive:false,blinkT:0,
-  attPhase:0,engPhase:0,cogPhase:0,
-  px:0,py:0,prevPx:0,prevPy:0,
-  trailBuf:null,
-  zm:null,
-  brightH:[],motionH:[],edgeH:[],HLEN:120,
-  frameZW:0,frameZH:0,
-};
-
-function G(id){return document.getElementById(id);}
-function ST(id,v){const e=G(id);if(e)e.textContent=v;}
-function SB(id,p){const e=G(id);if(e)e.style.width=Math.min(100,Math.max(0,p))+'%';}
-
-function sn(x,y,t){return (Math.sin(x*0.13+t)*Math.cos(y*0.17+t*0.7)+Math.sin(x*0.07-y*0.09+t*1.3))*0.5;}
-
-function startDemo(){
-  if(M.running)return;
-  ['nc1','nc2','nc3','nc4'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});
-  ['c-main','c-edge','c-motion','c-trail'].forEach(id=>{
-    const c=document.getElementById(id);if(c){c.width=M.W;c.height=M.H;}
-  });
-  const cz=document.getElementById('c-zones');if(cz){cz.width=cz.offsetWidth||320;cz.height=80;SIM.frameZW=cz.width;SIM.frameZH=cz.height;}
-  ['wf-br','wf-mo','wf-ed'].forEach(id=>{
-    const c=document.getElementById(id);if(c){c.width=(c.parentElement?.offsetWidth||384)-84;c.height=32;}
-  });
-  SIM.trailBuf=new Float32Array(M.W*M.H);
-  SIM.zm=new Float32Array(M.GC*M.GR);
-  SIM.px=M.W/2;SIM.py=M.H/2;SIM.prevPx=SIM.px;SIM.prevPy=SIM.py;
-  SIM.t=0;SIM.brightH=[];SIM.motionH=[];SIM.edgeH=[];
-  M.running=true;
-  const chip=document.getElementById('cam-chip');if(chip)chip.innerHTML='<div class="pulse-dot"></div>Demo Running';
-  const btn=document.getElementById('btn-start');
-  if(btn){btn.textContent='■ Stop Demo';btn.style.color='var(--warn)';btn.onclick=stopDemo;}
-  requestAnimationFrame(demoLoop);
+function stopCog(){
+  COG.running=false;
+  if(COG.rafId){cancelAnimationFrame(COG.rafId);COG.rafId=null;}
+  if(COG.stateTimer){clearInterval(COG.stateTimer);COG.stateTimer=null;}
+  G2('cog-run-btn').textContent='\u25B6 Run Demo';
+  G2('agent-status').textContent='Disconnected';
+  G2('cog-chip').innerHTML='<div class="pulse-dot"></div>Stopped';
+  G2('cog-state-lbl').textContent='IDLE';
 }
 
-function stopDemo(){
-  M.running=false;
-  const btn=document.getElementById('btn-start');
-  if(btn){btn.textContent='▶ Run Demo';btn.style.color='var(--ok)';btn.onclick=startDemo;}
-  const chip=document.getElementById('cam-chip');if(chip)chip.innerHTML='<div class="pulse-dot"></div>Demo Mode';
-  ['nc1','nc2','nc3','nc4'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='flex';});
-}
-
-function demoLoop(){
-  if(!M.running)return;
-  const W=M.W,H=M.H,GC=M.GC,GR=M.GR;
-  const dt=1/60;SIM.t+=dt;
-  M.frame++;M.fpsCnt++;
-  const now=performance.now();
-  if(now-M.fpsTime>=1000){M.fps=M.fpsCnt;M.fpsCnt=0;M.fpsTime=now;}
-
-  // ── Subject position via layered drift sines ──
-  let px=W*0.5,py=H*0.46;
-  SIM.drifts.forEach(d=>{px+=d.ax*Math.sin(d.wx*SIM.t+d.fx);py+=d.ay*Math.sin(d.wy*SIM.t+d.fy);});
-  SIM.prevPx=SIM.px;SIM.prevPy=SIM.py;SIM.px=px;SIM.py=py;
-
-  // ── Breathing scale ──
-  const bs=1+0.022*Math.sin(2*Math.PI*SIM.breathFreq*SIM.t);
-
-  // ── Blink ──
-  SIM.blinkTimer-=dt;
-  if(SIM.blinkTimer<=0&&!SIM.blinkActive){SIM.blinkActive=true;SIM.blinkT=0;SIM.blinkTimer=3.2+Math.random()*2.8;}
-  if(SIM.blinkActive){SIM.blinkT+=dt;const bd=0.22;SIM.eyeOpen=SIM.blinkT<bd/2?1-SIM.blinkT/(bd/2):(SIM.blinkT-bd/2)/(bd/2);if(SIM.blinkT>=bd){SIM.eyeOpen=1;SIM.blinkActive=false;}}
-
-  // ── Velocity / motion ──
-  const vx=px-SIM.prevPx,vy=py-SIM.prevPy,velMag=Math.sqrt(vx*vx+vy*vy);
-  const motionPct=Math.min(100,velMag*18);
-
-  // ── Trail accumulator ──
-  const tb=SIM.trailBuf;
-  for(let i=0;i<W*H;i++)tb[i]*=0.94;
-  const hx=Math.round(px),hy=Math.round(py);
-  for(let dy=-28;dy<=28;dy++)for(let dx=-28;dx<=28;dx++){
-    const d2=dx*dx+dy*dy,r2=28*28;if(d2>r2)continue;
-    const nx=hx+dx,ny=hy+dy;
-    if(nx>=0&&nx<W&&ny>=0&&ny<H)tb[ny*W+nx]+=Math.exp(-d2/(r2*.28))*0.55;
-  }
-
-  // ── Zone activity ──
-  const zm=SIM.zm;
-  const cw=Math.floor(W/GC),ch=Math.floor(H/GR);
-  for(let i=0;i<GC*GR;i++)zm[i]*=0.94;
-  const zc=Math.floor(Math.min(GC-1,Math.max(0,px/W*GC)));
-  const zr=Math.floor(Math.min(GR-1,Math.max(0,py/H*GR)));
-  zm[zr*GC+zc]+=velMag*0.8+0.3;
-  for(let dr=-1;dr<=1;dr++)for(let dc=-1;dc<=1;dc++){
-    const r2=zr+dr,c2=zc+dc;
-    if(r2>=0&&r2<GR&&c2>=0&&c2<GC)zm[r2*GC+c2]+=0.08;
-  }
-  const activeZ=Array.from(zm).filter(z=>z>1.5).length;
-
-  // ── Stats from physics ──
-  const br=Math.round(142+18*Math.sin(SIM.breathFreq*2*Math.PI*SIM.t)+8*sn(px,py,SIM.t));
-  const ed=Math.round(52+6*Math.sin(SIM.t*0.31));
-  const co=Math.round(44+12*sn(px+10,py,SIM.t*0.4));
-
-  // ── Paint helpers ──
-  function ellipse(ctx,x,y,rx,ry,fill,stroke){
-    ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,Math.PI*2);
-    if(fill){ctx.fillStyle=fill;ctx.fill();}
-    if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1.5;ctx.stroke();}
-  }
-  function drawSubject(ctx,alpha){
-    ctx.globalAlpha=alpha??1;
-    // Body glow
-    const bg=ctx.createRadialGradient(px,py+55,10,px,py+30,75);
-    bg.addColorStop(0,'rgba(80,42,20,.55)');bg.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=bg;ctx.beginPath();ctx.ellipse(px,py+55,60*bs,50,0,0,Math.PI*2);ctx.fill();
-    // Body
-    ellipse(ctx,px,py+62,54*bs,38,'#1a0d08','#2a1a10');
-    // Neck
-    ellipse(ctx,px,py+24,10*bs,14,'#211008');
-    // Head
-    const hg=ctx.createRadialGradient(px-10,py-12,6,px,py,46*bs);
-    hg.addColorStop(0,'#3a1e10');hg.addColorStop(1,'#1f0d06');
-    ellipse(ctx,px,py,38*bs,44*bs,hg,'rgba(120,70,20,.25)');
-    // Eyes
-    const ew=12,eh=SIM.eyeOpen*5;
-    ellipse(ctx,px-14,py-6,ew,eh,'#0a0504');
-    ellipse(ctx,px+14,py-6,ew,eh,'#0a0504');
-    // Iris
-    if(SIM.eyeOpen>.15){
-      ellipse(ctx,px-14,py-6,5*SIM.eyeOpen,5*SIM.eyeOpen,'#00c2f0');
-      ellipse(ctx,px+14,py-6,5*SIM.eyeOpen,5*SIM.eyeOpen,'#00c2f0');
+function enterState(idx){
+  const s=DEMO_STATES[idx];
+  G2('cog-chip').innerHTML=`<div class="pulse-dot"></div>${s.id}`;
+  G2('cog-state-lbl').textContent=s.id;
+  if(s.sys)addCogMsg('sys',s.sys);
+  if(s.msg){
+    if(s.msg.w==='agent'){
+      const tid='think-'+Date.now();
+      addGeminiThinking(tid);
+      setTimeout(()=>{removeThinking(tid);addCogMsg('agent',s.msg.t);animateAudio();},1000);
+    }else{
+      setTimeout(()=>addCogMsg('learner',s.msg.t),600);
     }
-    // Brows
-    ctx.strokeStyle='rgba(100,60,30,.7)';ctx.lineWidth=2;
-    ctx.beginPath();ctx.moveTo(px-22,py-16);ctx.lineTo(px-6,py-14);ctx.stroke();
-    ctx.beginPath();ctx.moveTo(px+6,py-14);ctx.lineTo(px+22,py-16);ctx.stroke();
-    // Nose
-    ctx.strokeStyle='rgba(80,45,20,.5)';ctx.lineWidth=1.5;
-    ctx.beginPath();ctx.moveTo(px,py-2);ctx.lineTo(px-6,py+10);ctx.lineTo(px+6,py+10);ctx.stroke();
-    // Mouth
-    ctx.strokeStyle='rgba(80,32,20,.65)';ctx.lineWidth=2;
-    ctx.beginPath();ctx.arc(px,py+18,9,0.1,Math.PI-.1);ctx.stroke();
-    // Landmark dots
-    const lms=[[px-14,py-6],[px+14,py-6],[px,py-2],[px-6,py+10],[px+6,py+10],[px,py+18],
-               [px-22,py-16],[px+22,py-16],[px-38*bs,py],[px+38*bs,py],[px,py-44*bs],[px,py+44*bs],
-               [px-25,py+20],[px+25,py+20]];
-    lms.forEach(([lx,ly])=>{
-      ctx.beginPath();ctx.arc(lx,ly,2.2,0,Math.PI*2);
-      ctx.fillStyle='rgba(108,92,231,.85)';ctx.fill();
+  }
+  if(s.int)setTimeout(()=>showCogToast(s.int),300);
+  setTimeout(()=>updateMastery(s.mastery),700);
+  const emoEl=G2('lm-emo');if(emoEl)emoEl.textContent=s.emo;
+}
+
+function tickState(){
+  if(!COG.running)return;
+  COG.elapsed++;COG.totalTime++;
+  const m=Math.floor(COG.totalTime/60),sc=COG.totalTime%60;
+  const tm=G2('cog-timer');if(tm)tm.textContent=String(m).padStart(2,'0')+':'+String(sc).padStart(2,'0');
+  const s=DEMO_STATES[COG.stateIdx];
+  if(COG.elapsed>=s.dur){
+    COG.elapsed=0;
+    COG.stateIdx=(COG.stateIdx+1)%DEMO_STATES.length;
+    if(COG.stateIdx===0){const mc=G2('mastery-cycle');if(mc){const c=parseInt(mc.textContent.replace('Cycle ',''))||1;mc.textContent='Cycle '+(c+1);}}
+    enterState(COG.stateIdx);
+  }
+  const lr=0.1;
+  COG.eng+=(s.eng-COG.eng)*lr;COG.att+=(s.att-COG.att)*lr;
+  COG.coe+=(s.coe-COG.coe)*lr;COG.ear+=(s.ear-COG.ear)*0.07;
+  COG.yaw+=(s.yaw-COG.yaw)*0.10;COG.rest+=(s.rest-COG.rest)*0.1;
+  COG.engH.push(COG.eng/100);if(COG.engH.length>COG.WH)COG.engH.shift();
+  COG.attH.push(COG.att/100);if(COG.attH.length>COG.WH)COG.attH.shift();
+  COG.cogH.push(COG.coe/100);if(COG.cogH.length>COG.WH)COG.cogH.shift();
+  if(s.blink&&Math.random()<.1){COG.blinks++;const b=G2('lm-blinks');if(b)b.textContent=COG.blinks;triggerBlink();}
+  setGauge('rg-eng','gv-eng',Math.round(COG.eng));
+  setGauge('rg-att','gv-att',Math.round(COG.att));
+  setGauge('rg-cog','gv-cog',Math.round(COG.coe));
+  const earEl=G2('lm-ear');if(earEl)earEl.textContent=COG.ear.toFixed(2);
+  const yawEl=G2('lm-yaw');if(yawEl)yawEl.textContent=Math.round(COG.yaw)+'\u00b0';
+  const restEl=G2('lm-rest');if(restEl)restEl.textContent=(COG.rest*100).toFixed(0)+'%';
+  COG.fpsCnt++;const now=performance.now();
+  if(now-COG.fpsT>=1000){COG.fps=COG.fpsCnt;COG.fpsCnt=0;COG.fpsT=now;}
+  const fpsEl=G2('lm-fps');if(fpsEl)fpsEl.textContent=COG.fps;
+}
+
+function triggerBlink(){if(!COG.blinkAnimating){COG.blinkAnimating=true;COG.blinkAnimT=0;}}
+
+function addCogMsg(who,text){
+  const chat=G2('cog-chat');if(!chat)return;
+  const d=document.createElement('div');
+  d.className='cog-msg '+who;
+  const label=who==='agent'?'Algsoch':who==='learner'?'Vicky':'';
+  d.innerHTML=(label?`<div class="cog-msg-who">${label}</div>`:'')+text;
+  chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+}
+
+function addGeminiThinking(id){
+  const chat=G2('cog-chat');if(!chat)return;
+  const d=document.createElement('div');
+  d.className='cog-msg agent gemini-thinking';d.id=id;
+  d.innerHTML='<span style="color:var(--a2);font-weight:700;margin-right:6px;">Algsoch</span><span class="gt-dots"><span></span><span></span><span></span></span><span style="opacity:.55;font-size:10px;margin-left:8px;">via Gemini 2.5 Flash</span>';
+  chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+}
+
+function removeThinking(id){const el=G2(id);if(el)el.remove();}
+
+function showCogToast(text){
+  const t=G2('int-toast');if(!t)return;
+  t.textContent=text;t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+function animateAudio(){
+  const ind=G2('audio-ind');if(!ind)return;
+  const bars=ind.querySelectorAll('span');
+  let tick=0;const anim=setInterval(()=>{
+    bars.forEach(b=>{b.style.height=Math.floor(2+Math.random()*14)+'px';});
+    tick+=80;if(tick>=2400){clearInterval(anim);bars.forEach(b=>{b.style.height='4px';});}
+  },80);
+}
+
+function setGauge(ringId,valId,pct){
+  const ring=G2(ringId);if(ring)ring.style.strokeDashoffset=150.8*(1-Math.min(100,pct)/100);
+  const val=G2(valId);if(val)val.textContent=Math.round(pct);
+}
+
+function updateMastery(m){
+  const set=(bi,vi,p)=>{const b=G2(bi);if(b)b.style.width=p+'%';const v=G2(vi);if(v)v.textContent=p+'%';};
+  set('mb-dec','mv-dec',m.dec);set('mb-clo','mv-clo',m.clo);
+  set('mb-hof','mv-hof',m.hof);set('mb-ft','mv-ft',m.ft);
+}
+
+/* ── Canvas RAF loop ─────────────────── */
+function cogRaf(ts){
+  if(!COG.running)return;
+  const dt=(ts-(COG.lastRafT||ts))/1000;COG.lastRafT=ts;COG.t+=dt;
+  if(COG.blinkAnimating){
+    COG.blinkAnimT+=dt;const bd=0.22;
+    COG.blinkEyeOpen=COG.blinkAnimT<bd/2?1-COG.blinkAnimT/(bd/2):(COG.blinkAnimT-bd/2)/(bd/2);
+    if(COG.blinkAnimT>=bd){COG.blinkEyeOpen=1;COG.blinkAnimating=false;}
+  }
+  const cv=G2('cv-learner');if(cv)drawLearner(cv.getContext('2d'),cv.width,cv.height);
+  const wf=G2('cv-wf');
+  if(wf&&COG.engH.length>1){wf.width=wf.parentElement?.offsetWidth||320;drawDualWF(wf.getContext('2d'),wf.width,wf.height);}
+  COG.rafId=requestAnimationFrame(cogRaf);
+}
+
+/* ── Draw learner face canvas ────────── */
+function drawLearner(ctx,W,H){
+  const s=DEMO_STATES[COG.stateIdx]||DEMO_STATES[0];
+  const t=COG.t;
+
+  // Face pos with gentle drift + yaw offset
+  const px=W/2+Math.sin(t*.18)*6+Math.sin(t*.33)*2+COG.yaw*1.4;
+  const py=H*.45+Math.sin(t*.22)*3;
+  const bs=1+0.017*Math.sin(t*1.7); // breathing scale
+
+  // Background
+  ctx.fillStyle='#010206';ctx.fillRect(0,0,W,H);
+  // Room ambient (warm top-left — screen bounce)
+  const ag=ctx.createRadialGradient(W*.25,H*.15,10,W*.5,H*.38,W*.82);
+  ag.addColorStop(0,'rgba(50,28,12,.28)');ag.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=ag;ctx.fillRect(0,0,W,H);
+  // Screen glow on face (blue-white when focused, warm when distracted)
+  const sgi=COG.att/100*.32+.04;
+  const sgh=COG.yaw>15?30:220; // warm when looking away
+  const sg=ctx.createRadialGradient(W*.55,H*.08,10,W*.5,H*.28,W*.7);
+  sg.addColorStop(0,`hsla(${sgh},72%,62%,${sgi})`);sg.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=sg;ctx.fillRect(0,0,W,H);
+  // Desk
+  ctx.fillStyle='rgba(18,10,4,.85)';ctx.fillRect(0,H*.83,W,H*.17);
+  ctx.fillStyle='rgba(35,20,7,.5)';ctx.fillRect(0,H*.81,W,3);
+  // Scanlines
+  ctx.fillStyle='rgba(255,255,255,.007)';for(let y=0;y<H;y+=3)ctx.fillRect(0,y,W,1);
+
+  // Body
+  const bx=px,by=py+62;
+  const bodyG=ctx.createRadialGradient(bx,by,4,bx,by+8,72);
+  bodyG.addColorStop(0,'rgba(55,25,10,.72)');bodyG.addColorStop(1,'rgba(0,0,0,0)');
+  ctx.fillStyle=bodyG;ctx.beginPath();ctx.ellipse(bx,by,82,56,0,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#1b0c07';ctx.beginPath();ctx.ellipse(bx,by+4,58*bs,42,0,0,Math.PI*2);ctx.fill();
+  // Neck
+  ctx.fillStyle='#1e0d06';ctx.beginPath();ctx.ellipse(px,py+27,11,16,0,0,Math.PI*2);ctx.fill();
+
+  // Head
+  const hg=ctx.createRadialGradient(px-10,py-14,4,px,py,52*bs);
+  hg.addColorStop(0,'#3c1e10');hg.addColorStop(1,'#1e0c06');
+  ctx.beginPath();ctx.ellipse(px,py,40*bs,46*bs,0,0,Math.PI*2);
+  ctx.fillStyle=hg;ctx.fill();
+  ctx.strokeStyle='rgba(90,48,18,.2)';ctx.lineWidth=1;ctx.stroke();
+
+  // Confusion cheek flush
+  if(COG.coe>58){
+    const alpha=(COG.coe-58)/220;
+    [[px-21,py+4],[px+21,py+4]].forEach(([cx,cy])=>{
+      const fl=ctx.createRadialGradient(cx,cy,1,cx,cy,18);
+      fl.addColorStop(0,`rgba(215,72,55,${alpha})`);fl.addColorStop(1,'rgba(0,0,0,0)');
+      ctx.fillStyle=fl;ctx.beginPath();ctx.ellipse(cx,cy,18,13,0,0,Math.PI*2);ctx.fill();
     });
-    ctx.globalAlpha=1;
   }
 
-  // ── RAW panel ──
-  const cm=G('c-main');
-  if(cm){
-    const ctx=cm.getContext('2d');
-    ctx.fillStyle='#02040a';ctx.fillRect(0,0,W,H);
-    // Room ambient
-    const ag=ctx.createRadialGradient(W*.3,H*.2,20,W*.5,H*.4,W*.72);
-    ag.addColorStop(0,'rgba(80,50,20,.18)');ag.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=ag;ctx.fillRect(0,0,W,H);
-    // Scanlines
-    ctx.fillStyle='rgba(255,255,255,.012)';
-    for(let y=0;y<H;y+=4)ctx.fillRect(0,y,W,1);
-    drawSubject(ctx,1);
-    // Zone overlays
-    ctx.lineWidth=1.2;
-    for(let r=0;r<GR;r++)for(let c=0;c<GC;c++){
-      const zv=zm[r*GC+c];
-      if(zv>2){ctx.strokeStyle=`rgba(0,194,240,${Math.min(.9,zv/10)})`;ctx.strokeRect(c*(W/GC),r*(H/GR),W/GC,H/GR);}
-    }
-    // HUD
-    ctx.font='bold 10px JetBrains Mono,monospace';ctx.fillStyle='rgba(0,194,240,.6)';
-    ctx.textAlign='left';ctx.fillText('F:'+M.frame.toString().padStart(6,'0'),6,H-8);
-    ctx.textAlign='right';ctx.fillText(M.fps+' fps',W-6,H-8);
+  // Brows (raise when confused, neutral when focused)
+  const browY=py-18-(COG.coe/100)*4;
+  const browWave=(COG.coe/150)*Math.sin(t*.55);
+  ctx.strokeStyle='rgba(95,52,20,.78)';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(px-24,browY+browWave);ctx.lineTo(px-7,browY-1);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(px+7,browY-1);ctx.lineTo(px+24,browY+browWave);ctx.stroke();
+
+  // Eyes
+  const eyeH=COG.blinkEyeOpen*5.5+0.4;
+  ctx.fillStyle='rgba(8,4,2,.96)';
+  ctx.beginPath();ctx.ellipse(px-16,py-6,13,eyeH+1,0,0,Math.PI*2);ctx.fill();
+  ctx.beginPath();ctx.ellipse(px+16,py-6,13,eyeH+1,0,0,Math.PI*2);ctx.fill();
+
+  // Gaze offset: lateral from yaw, vertical when attention low (looking down)
+  const gazeX=COG.yaw/90*6;
+  const gazeY=COG.att<45?1.8:0;
+  if(COG.blinkEyeOpen>0.18){
+    // Iris
+    ctx.fillStyle='#00b8d4';
+    ctx.beginPath();ctx.arc(px-16+gazeX,py-6+gazeY,4.5*COG.blinkEyeOpen,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(px+16+gazeX,py-6+gazeY,4.5*COG.blinkEyeOpen,0,Math.PI*2);ctx.fill();
+    // Pupil
+    ctx.fillStyle='rgba(0,0,0,.82)';
+    ctx.beginPath();ctx.arc(px-16+gazeX,py-6+gazeY,2*COG.blinkEyeOpen,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(px+16+gazeX,py-6+gazeY,2*COG.blinkEyeOpen,0,Math.PI*2);ctx.fill();
+    // Eye shine
+    ctx.fillStyle='rgba(255,255,255,.62)';
+    ctx.beginPath();ctx.arc(px-14+gazeX,py-8+gazeY,1.2,0,Math.PI*2);ctx.fill();
+    ctx.beginPath();ctx.arc(px+18+gazeX,py-8+gazeY,1.2,0,Math.PI*2);ctx.fill();
   }
 
-  // ── EDGE panel ──
-  const ce=G('c-edge');
-  if(ce){
-    const ctx=ce.getContext('2d');
-    ctx.fillStyle='#000';ctx.fillRect(0,0,W,H);
-    for(let pass=0;pass<4;pass++){
-      const sc=1-(pass*0.18),al=0.75-pass*0.15;
-      ctx.globalAlpha=al;
-      ctx.save();ctx.translate(px,py);ctx.scale(sc,sc);ctx.translate(-px,-py);
-      // Head outline
-      ctx.beginPath();ctx.ellipse(px,py,38*bs,44*bs,0,0,Math.PI*2);
-      const eg=ctx.createLinearGradient(0,py-44*bs,0,py+44*bs);
-      eg.addColorStop(0,'rgba(108,92,231,1)');eg.addColorStop(1,'rgba(0,194,240,1)');
-      ctx.strokeStyle=eg;ctx.lineWidth=2.5-pass*.4;ctx.stroke();
-      // Body outline
-      ctx.beginPath();ctx.ellipse(px,py+62,54*bs,38,0,0,Math.PI*2);ctx.stroke();
-      // Eye arcs
-      ctx.beginPath();ctx.ellipse(px-14,py-6,12,SIM.eyeOpen*5+0.5,0,0,Math.PI*2);ctx.stroke();
-      ctx.beginPath();ctx.ellipse(px+14,py-6,12,SIM.eyeOpen*5+0.5,0,0,Math.PI*2);ctx.stroke();
-      ctx.restore();
-    }
-    ctx.globalAlpha=1;
+  // Nose
+  ctx.strokeStyle='rgba(78,40,16,.55)';ctx.lineWidth=1.5;
+  ctx.beginPath();ctx.moveTo(px,py-1);ctx.lineTo(px-5,py+12);ctx.lineTo(px+5,py+12);ctx.stroke();
+
+  // Mouth expression (smile when engaged, flat when confused)
+  const mouthCurve=(COG.eng-60)/300;
+  ctx.strokeStyle='rgba(78,28,18,.72)';ctx.lineWidth=2;
+  ctx.beginPath();ctx.moveTo(px-10,py+22);
+  ctx.quadraticCurveTo(px,py+24+mouthCurve*8,px+10,py+22);ctx.stroke();
+
+  // ── MediaPipe landmark dots (simplified 40 pt subset) ──
+  const lms=[
+    // Face oval
+    [-38,0],[-35,-14],[-30,-28],[-20,-38],[-8,-44],[8,-44],[20,-38],[30,-28],[35,-14],[38,0],
+    [35,14],[30,28],[20,38],[8,44],[-8,44],[-20,38],[-30,28],[-35,14],
+    // Eyes (6 pts each)
+    [-26,-6],[-20,-9],[-12,-9],[-8,-6],[-12,-3],[-20,-3],
+    [8,-6],[14,-9],[22,-9],[26,-6],[22,-3],[14,-3],
+    // Nose bridge
+    [0,-16],[0,-8],[0,0],[0,12],[-5,12],[5,12],
+    // Mouth corners
+    [-11,22],[11,22],[0,28]
+  ];
+  const jitterAmt=COG.rest*2.4;
+  lms.forEach(([lx,ly],i)=>{
+    const jx=(Math.random()-.5)*jitterAmt,jy=(Math.random()-.5)*jitterAmt;
+    const wx=px+lx+jx,wy=py+ly+jy;
+    const isEye=i>=18&&i<=29;
+    const alpha=isEye?.92:.68;
+    const col=isEye?`rgba(0,194,240,${alpha})`:`rgba(108,92,231,${alpha})`;
+    ctx.beginPath();ctx.arc(wx,wy,isEye?1.9:1.4,0,Math.PI*2);
+    ctx.fillStyle=col;ctx.fill();
+  });
+
+  // ── Gaze vectors (iris → focus point) ──
+  if(COG.blinkEyeOpen>0.4&&COG.att>18){
+    const ga=Math.min(.75,COG.att/110),gl=18+COG.att*.05;
+    ctx.strokeStyle=`rgba(0,194,240,${ga})`;ctx.lineWidth=1.4;
+    ctx.beginPath();ctx.moveTo(px-16,py-6);ctx.lineTo(px-16+gazeX*gl/6,py-6+gazeY*gl/3);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(px+16,py-6);ctx.lineTo(px+16+gazeX*gl/6,py-6+gazeY*gl/3);ctx.stroke();
+    ctx.beginPath();ctx.arc(px+(gazeX*gl/6),py-6+(gazeY*gl/3),1.8,0,Math.PI*2);
+    ctx.fillStyle=`rgba(0,194,240,${ga})`;ctx.fill();
   }
 
-  // ── MOTION HEATMAP panel ──
-  const cmo=G('c-motion');
-  if(cmo){
-    const ctx=cmo.getContext('2d');
-    ctx.fillStyle='rgba(2,4,9,.22)';ctx.fillRect(0,0,W,H);
-    drawSubject(ctx,.45);
-    // Motion blob at head
-    const speed=Math.min(1,velMag/5);
-    const hue=200-speed*120;
-    const mg=ctx.createRadialGradient(px,py,4,px,py,35+velMag*6);
-    mg.addColorStop(0,`hsla(${hue},100%,70%,.75)`);
-    mg.addColorStop(0.5,`hsla(${hue+30},90%,55%,.35)`);
-    mg.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=mg;ctx.beginPath();ctx.ellipse(px,py,38+velMag*5,44+velMag*3,0,0,Math.PI*2);ctx.fill();
-    // Body blob
-    const mg2=ctx.createRadialGradient(px,py+62,8,px,py+62,50);
-    mg2.addColorStop(0,`hsla(${hue},80%,50%,.35)`);mg2.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=mg2;ctx.beginPath();ctx.ellipse(px,py+62,54,42,0,0,Math.PI*2);ctx.fill();
-  }
+  // ── YOLO11 shoulder skeleton ──
+  ctx.strokeStyle='rgba(108,92,231,.32)';ctx.lineWidth=1.5;
+  const ls=[bx-58,by-12],rs=[bx+58,by-12],nk=[px,py+30];
+  ctx.beginPath();ctx.moveTo(ls[0],ls[1]);ctx.lineTo(nk[0],nk[1]);ctx.lineTo(rs[0],rs[1]);ctx.stroke();
+  [ls,rs,nk].forEach(([kx,ky])=>{
+    ctx.beginPath();ctx.arc(kx,ky,3.5,0,Math.PI*2);
+    ctx.fillStyle='rgba(108,92,231,.6)';ctx.fill();
+  });
 
-  // ── TRAIL panel ──
-  const ct=G('c-trail');
-  if(ct){
-    const ctx=ct.getContext('2d');
-    ctx.fillStyle='rgba(2,4,9,.055)';ctx.fillRect(0,0,W,H);
-    // Draw accumulated trail from buffer
-    const tOut=new Uint8ClampedArray(W*H*4);
-    for(let i=0;i<W*H;i++){
-      const v=Math.min(255,tb[i]*260),o=i*4;
-      tOut[o]=Math.floor(v*.32);tOut[o+1]=Math.floor(v*.22);tOut[o+2]=Math.floor(v*.95);tOut[o+3]=v>6?200:0;
-    }
-    ctx.putImageData(new ImageData(tOut,W,H),0,0);
-    // Live head glow on top
-    const tg=ctx.createRadialGradient(px,py,2,px,py,22);
-    tg.addColorStop(0,'rgba(108,92,231,.95)');tg.addColorStop(1,'rgba(0,0,0,0)');
-    ctx.fillStyle=tg;ctx.beginPath();ctx.arc(px,py,22,0,Math.PI*2);ctx.fill();
-  }
+  // ── EAR indicator bar (right side) ──
+  const earBarH=Math.round(COG.ear*3*20),earMaxH=20;
+  ctx.fillStyle='rgba(0,194,240,.25)';ctx.fillRect(W-12,py-earMaxH,4,earMaxH*2);
+  ctx.fillStyle='rgba(0,194,240,.8)';ctx.fillRect(W-12,py+earMaxH-earBarH,4,earBarH);
 
-  // ── Zone grid canvas ──
-  const cz=G('c-zones');
-  if(cz){
-    cz.width=cz.offsetWidth||320;
-    const ctx=cz.getContext('2d');const zW=cz.width,zH=cz.height;
-    ctx.clearRect(0,0,zW,zH);
-    const rcw=zW/GC,rch=zH/GR;
-    for(let r=0;r<GR;r++)for(let c=0;c<GC;c++){
-      const z=zm[r*GC+c],t=Math.min(1,z/6);
-      ctx.fillStyle=`hsla(${260-t*100},${55+t*40}%,${13+t*48}%,1)`;ctx.fillRect(c*rcw+.5,r*rch+.5,rcw-1,rch-1);
-      if(z>1.5){
-        const grd=ctx.createRadialGradient(c*rcw+rcw/2,r*rch+rch/2,0,c*rcw+rcw/2,r*rch+rch/2,rcw*.9);
-        grd.addColorStop(0,`rgba(0,194,240,${Math.min(.55,t*.65)})`);grd.addColorStop(1,'rgba(0,194,240,0)');
-        ctx.fillStyle=grd;ctx.fillRect(c*rcw,r*rch,rcw,rch);
-      }
-      if(z>.5){
-        ctx.fillStyle=`rgba(255,255,255,${Math.min(.75,t+.15)})`;
-        ctx.font=`600 ${Math.min(10,rcw*.38)}px JetBrains Mono,monospace`;
-        ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(z.toFixed(0),c*rcw+rcw/2,r*rch+rch/2);
-      }
-    }
-  }
-
-  // ── Stats ──
-  const noise=sn(px,py,SIM.t);
-  ST('sv-br',br);SB('sb-br',br/255*100);ST('sv-mo',Math.round(motionPct)+'%');SB('sb-mo',motionPct);
-  ST('sv-ed',ed+'%');SB('sb-ed',ed);ST('sv-co',co+'%');SB('sb-co',co);
-  ST('sv-zo',activeZ);SB('sb-zo',activeZ/(GC*GR)*100);ST('sv-fr',M.frame);
-  ST('fps-disp',M.fps+' fps');
-  ST('p1s1','Brightness: '+br);ST('p1s2','Contrast: '+co+'%');
-  ST('p2s1','Edges: '+ed+'%');ST('p2s2','Complexity: '+(ed>56?'High':ed>48?'Med':'Low'));
-  ST('p3s1','Motion: '+Math.round(motionPct)+'%');ST('p3s2','Velocity: '+(velMag>2.5?'High':velMag>0.8?'Med':'Low'));
-  const trailAvg=Math.round(tb.reduce((a,b)=>a+b,0)/(W*H)*10);
-  ST('p4s1','Trail: '+trailAvg);ST('p4s2','Zones: '+activeZ+'/'+GC*GR);
-
-  // ── Waveforms ──
-  SIM.brightH.push(br/255);if(SIM.brightH.length>SIM.HLEN)SIM.brightH.shift();
-  SIM.motionH.push(motionPct/100);if(SIM.motionH.length>SIM.HLEN)SIM.motionH.shift();
-  SIM.edgeH.push(ed/100);if(SIM.edgeH.length>SIM.HLEN)SIM.edgeH.shift();
-  drawWF('wf-br',SIM.brightH,'108,92,231');drawWF('wf-mo',SIM.motionH,'255,179,0');drawWF('wf-ed',SIM.edgeH,'0,194,240');
-
-  requestAnimationFrame(demoLoop);
+  // ── HUD bottom ──
+  ctx.font='bold 9px JetBrains Mono,monospace';
+  ctx.textAlign='left';ctx.fillStyle='rgba(0,194,240,.52)';
+  ctx.fillText('F:'+String(Math.floor(COG.t*15)).padStart(6,'0'),5,H-7);
+  ctx.textAlign='right';
+  const sc={FOCUSED:'#00e676',DISTRACTED:'#ffb300',CONFUSED:'#ff5252',ENGAGED:'#00e676',
+            GREETING:'#00cfe8',MASTERY:'#b3acff',RECALL:'#b3acff',ANSWERING:'#ffb300'}[s.id]||'#9da3c8';
+  ctx.fillStyle=sc;ctx.fillText(s.id,W-5,H-7);
 }
 
-function drawWF(id,data,rgb){
-  const c=G(id);if(!c||!data.length)return;
-  c.width=c.parentElement?c.parentElement.offsetWidth-84:300;
-  const ctx=c.getContext('2d'),W=c.width,H=c.height;
-  ctx.clearRect(0,0,W,H);
-  const grd=ctx.createLinearGradient(0,0,0,H);grd.addColorStop(0,`rgba(${rgb},.35)`);grd.addColorStop(1,`rgba(${rgb},.03)`);
-  ctx.beginPath();
-  data.forEach((v,i)=>{const x=i/(data.length-1)*W,y=H-v*H*.88-1;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.lineTo(W,H);ctx.lineTo(0,H);ctx.closePath();ctx.fillStyle=grd;ctx.fill();
-  ctx.beginPath();
-  data.forEach((v,i)=>{const x=i/(data.length-1)*W,y=H-v*H*.88-1;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
-  ctx.strokeStyle=`rgba(${rgb},1)`;ctx.lineWidth=1.5;ctx.stroke();
-  if(data.length>1){
-    const lv=data[data.length-1];ctx.beginPath();ctx.arc(W,H-lv*H*.88-1,3,0,Math.PI*2);
-    ctx.fillStyle=`rgba(${rgb},1)`;ctx.fill();
-  }
+/* ── Dual waveform canvas ────────────── */
+function drawDualWF(ctx,W,H){
+  ctx.fillStyle='rgba(2,4,9,.96)';ctx.fillRect(0,0,W,H);
+  // Grid
+  ctx.strokeStyle='rgba(255,255,255,.03)';ctx.lineWidth=1;
+  for(let i=1;i<4;i++){ctx.beginPath();ctx.moveTo(0,H*i/4);ctx.lineTo(W,H*i/4);ctx.stroke();}
+  drawWFLine2(ctx,COG.engH,W,H,'0,230,118',false);
+  drawWFLine2(ctx,COG.attH,W,H,'0,207,232',false);
+  drawWFLine2(ctx,COG.cogH,W,H,'255,179,0',true);
 }
 
-window.addEventListener('load',()=>setTimeout(startDemo,900));
+function drawWFLine2(ctx,data,W,H,rgb,dashed){
+  if(data.length<2)return;
+  ctx.setLineDash(dashed?[3,4]:[]);
+  ctx.beginPath();
+  data.forEach((v,i)=>{const x=i/(data.length-1)*W,y=H-v*H*.9-2;i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});
+  ctx.strokeStyle=`rgba(${rgb},.88)`;ctx.lineWidth=1.5;ctx.stroke();
+  ctx.setLineDash([]);
+  const lv=data[data.length-1];
+  ctx.beginPath();ctx.arc(W,H-lv*H*.9-2,3,0,Math.PI*2);
+  ctx.fillStyle=`rgba(${rgb},1)`;ctx.fill();
+}
+
+window.addEventListener('load',()=>setTimeout(startCog,1100));
 </script>
 <script src="https://www.youtube.com/iframe_api"></script>
 </body>
